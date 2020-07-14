@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Jack Jones - Portfolio - Tax Calculator</title>
+        <link rel="icon" type="image/x-icon" href="../../assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="../../css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Jack L Jones</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="#" alt="" /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="..//..//index.html">Main Site</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../csharp.html">C#</a></li>
+                    <li class="nav-item"><a  class="nav-link js-scroll-trigger" href="../../java.html">Java</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../python.html">Python</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="../../vb.html">Visual Basic</a></li>
+                    <li class="nav-item"><a style="color:black;" class="nav-link js-scroll-trigger" href="../../webdesign.html"><strong>Web Design</strong></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+          
+            <hr class="m-0" />
+            <!-- Table-->
+            <section class="resume-section" id="interests">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Random Code Generator</h2>
+                    <form>
+
+                        <label for="allowed"><b>Allowed Characters</b></label>
+
+                        <div id="allowedCharacterGroup">
+                            <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" checked="true" id="optionOne">
+                                  <label class="form-check-label" for="optionOne">
+                                    Alphabetical
+                                  </label>
+                            </div>
+
+                             <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" checked="true" id="optionTwo">
+                                  <label class="form-check-label" for="optionTwo">
+                                    Numerical
+                                  </label>
+                            </div>
+
+                             <div class="form-check">
+                                  <input class="form-check-input" type="checkbox"  id="optionThree">
+                                  <label class="form-check-label" for="optionThree">
+                                    Symbols
+                                  </label>
+                            </div>
+                        </div>
+                        <br>
+
+                            
+                       
+                         <div class="form-group">
+                                <div class="slidecontainer">
+                                    <label for="taxValue">Code Length</label>
+                                     <input type="range" class="form-control" id="codeLength" aria-describedby="taxValue" min="1" max="20" step="1"value="10" class="slider">
+                                     <p id="cl"></p>
+                                </div>
+                         </div>
+                         <div class="form-group">
+                            <label for="getCode">Code</label>
+                            <p style="font-weight:bold;"id="gc" class="mb-5"></p>
+                            
+                            
+                            <button class="btn btn-primary" type="button" onclick="copy()">Copy</button>
+                          
+                         </div>
+                    </form>  
+                </div>
+            </section>
+            <hr class="m-0" />
+           
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../../js/scripts.js"></script>
+
+
+        <script type="text/javascript">
+
+            function getCode(a,n,s, length){
+                var allowed = [];
+                if (a){
+                    var alpha = "abcdefghijklmnopqrstuvwxyz";
+                    alpha += alpha.toUpperCase();
+                    alpha = alpha.split("");
+                    allowed = allowed.concat(alpha);
+                }if (n){
+                    var nums = "1234567890";
+                    nums = nums.split("");
+                    allowed = allowed.concat(nums);
+                    console.log("n ran");
+                }if (s){
+                    var sym = "!\"£$%^&*()-+_=";
+                    sym = sym.split("");
+                    allowed = allowed.concat(sym);
+                    
+                }
+        
+                var code = "";
+                for (i = 0; i < length; i++) {
+                        var indexOfCharacter = Math.floor((Math.random() * (allowed.length - 1)) + 1);
+                        var toAppend = allowed[indexOfCharacter];
+                        code = code + toAppend;
+                }
+                console.log(code);
+                return code;
+
+            }
+
+            var slider = document.getElementById("codeLength");
+            var outputA = document.getElementById("cl");
+            var outputB = document.getElementById("gc");
+            
+            var aIA = document.getElementById("optionOne");
+            var nIA = document.getElementById("optionTwo");
+            var sIA = document.getElementById("optionThree");
+            var len = slider.value;
+            outputA.innerHTML = len;
+            outputB.innerHTML = getCode(aIA.checked,nIA.checked,sIA.checked,parseInt(len, 10));
+            
+            slider.oninput = function(){
+                len = this.value;
+                outputA.innerHTML = len;
+                outputB.innerHTML = getCode(aIA.checked,nIA.checked,sIA.checked,parseInt(len, 10));
+            }
+
+
+        </script>
+
+        <script type="text/javascript">
+            function copy(){
+                var text = document.getElementById("gc").innerHTML;
+navigator.clipboard.writeText(text).then(function() {
+  console.log('Async: Copying to clipboard was successful!');
+}, function(err) {
+  console.error('Async: Could not copy text: ', err);
+});
+            }
+            
+
+
+        </script>
+    </body>
+</html>
