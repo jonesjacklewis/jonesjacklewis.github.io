@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Jack Jones - Portfolio - Tax Calculator</title>
+        <title>Jack Jones - Portfolio - Random Code Generator</title>
         <link rel="icon" type="image/x-icon" href="../../assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
@@ -48,25 +48,33 @@
 
                         <div id="allowedCharacterGroup">
                             <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" checked="true" id="optionOne">
-                                  <label class="form-check-label" for="optionOne">
-                                    Alphabetical
+                                  <input class="form-check-input" type="checkbox" checked="true" id="optionLower">
+                                  <label class="form-check-label" for="optionLower">
+                                    Lowercase
                                   </label>
                             </div>
 
                              <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" checked="true" id="optionTwo">
-                                  <label class="form-check-label" for="optionTwo">
+                                  <input class="form-check-input" type="checkbox" checked="true" id="optionUpper">
+                                  <label class="form-check-label" for="optionUpper">
+                                    Uppercase
+                                  </label>
+                            </div>
+
+                             <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" checked="true" id="optionNumber">
+                                  <label class="form-check-label" for="optionNumber">
                                     Numerical
                                   </label>
                             </div>
 
                              <div class="form-check">
-                                  <input class="form-check-input" type="checkbox"  id="optionThree">
-                                  <label class="form-check-label" for="optionThree">
+                                  <input class="form-check-input" type="checkbox"  id="optionSymbol">
+                                  <label class="form-check-label" for="optionSymbol">
                                     Symbols
                                   </label>
                             </div>
+
                         </div>
                         <br>
 
@@ -104,11 +112,14 @@
 
         <script type="text/javascript">
 
-            function getCode(a,n,s, length){
+            function getCode(l,u,n,s,length){
+                if(!l && !n && !u && !s){
+                    return "Choose a character type.";
+                }
                 var allowed = [];
-                if (a){
+
+                if (l){
                     var alpha = "abcdefghijklmnopqrstuvwxyz";
-                    alpha += alpha.toUpperCase();
                     alpha = alpha.split("");
                     allowed = allowed.concat(alpha);
                 }if (n){
@@ -117,12 +128,14 @@
                     allowed = allowed.concat(nums);
                     console.log("n ran");
                 }if (s){
-                    var sym = "!\"£$%^&*()-+_=";
+                    var sym = "!\"£$%^&*()-+_=`¬|\\/'@.>,<;:'@[{]}#~";
                     sym = sym.split("");
                     allowed = allowed.concat(sym);
-                    
+                }if(u){
+                    var alpha = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
+                    alpha = alpha.split("");
+                    allowed = allowed.concat(alpha);
                 }
-        
                 var code = "";
                 for (i = 0; i < length; i++) {
                         var indexOfCharacter = Math.floor((Math.random() * (allowed.length - 1)) + 1);
@@ -131,25 +144,31 @@
                 }
                 console.log(code);
                 return code;
+               
 
             }
 
             var slider = document.getElementById("codeLength");
             var outputA = document.getElementById("cl");
             var outputB = document.getElementById("gc");
-            
-            var aIA = document.getElementById("optionOne");
-            var nIA = document.getElementById("optionTwo");
-            var sIA = document.getElementById("optionThree");
+
+
+
+            lIA = document.getElementById("optionLower");
+            uIA = document.getElementById("optionUpper");
+            nIA = document.getElementById("optionNumber");
+            sIA = document.getElementById("optionSymbol");
+           
             var len = slider.value;
             outputA.innerHTML = len;
-            outputB.innerHTML = getCode(aIA.checked,nIA.checked,sIA.checked,parseInt(len, 10));
+            outputB.innerHTML = getCode(lIA.checked,uIA.checked,nIA.checked,sIA.checked,parseInt(len, 10));
             
             slider.oninput = function(){
                 len = this.value;
                 outputA.innerHTML = len;
-                outputB.innerHTML = getCode(aIA.checked,nIA.checked,sIA.checked,parseInt(len, 10));
+                outputB.innerHTML = getCode(lIA.checked,uIA.checked,nIA.checked,sIA.checked,parseInt(len, 10));
             }
+        
 
 
         </script>
