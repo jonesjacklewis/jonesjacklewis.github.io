@@ -23,7 +23,7 @@ body {
     padding-top: 3px;
 }
 .calc-btn:hover{
-    background-color: orange;
+    background-color: #0074D9;
 }
 
 .row{
@@ -58,7 +58,7 @@ body {
     border-radius: 7px 7px 0 0;
 }
 .calc-btn-operator{
-    background-color: orange;
+    background-color: #0074D9;
     color: white;
 }
 h1{
